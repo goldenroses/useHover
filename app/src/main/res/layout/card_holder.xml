@@ -21,9 +21,12 @@
             <ImageView
                     android:layout_width="99dp"
                     android:layout_height="90dp"
-                    android:id="@+id/cardImageView"
+                    android:tint="@android:color/holo_orange_dark"
+                    android:src="@drawable/ic_gift"
+                    android:id="@+id/cardImage"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
             />
             <TextView
                     android:text="Buy Airtime"
@@ -31,7 +34,7 @@
                     android:textSize="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/cardTitle"
-                    app:layout_constraintStart_toEndOf="@+id/cardImageView" android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/cardImage" android:layout_marginStart="8dp"
                     app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@+id/cardDescription"/>
@@ -41,12 +44,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/cardDescription"
                     app:layout_constraintTop_toBottomOf="@+id/cardTitle" app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="8dp" app:layout_constraintStart_toEndOf="@+id/cardImageView"
+                    android:layout_marginEnd="8dp" app:layout_constraintStart_toEndOf="@+id/cardImage"
                     android:layout_marginStart="8dp" android:textSize="18sp"/>
             <ImageView
                     android:layout_width="32dp"
                     android:src="@drawable/shopping_cart"
-                    android:layout_height="32dp" android:id="@+id/cardPrice"
+                    android:layout_height="32dp"
+                    android:id="@+id/cardPrice"
                     app:layout_constraintTop_toBottomOf="@+id/cardDescription"
                     android:layout_marginTop="8dp"
                     android:textAlignment="center"

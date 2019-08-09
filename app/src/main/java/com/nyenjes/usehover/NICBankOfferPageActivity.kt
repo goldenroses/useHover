@@ -13,7 +13,7 @@ import android.widget.Toast
 import android.app.Activity
 
 class NICBankOfferPageActivity: AppCompatActivity() {
-    private var adapter: CardRecyclerAdapter? = CardRecyclerAdapter(null)
+    private var adapter: CardRecyclerAdapter? = CardRecyclerAdapter(null, this)
     private var recycler: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +28,9 @@ class NICBankOfferPageActivity: AppCompatActivity() {
 
     }
 
-    fun buyBundle5Bob(view: View) {
+    fun buyBundle20BobAirtime(view: View) {
         val i =  HoverParameters.Builder(this)
-            .request("5963ca2d")
+            .request("986449a0")
             .buildIntent()
 
         startActivityForResult(i, 0)
