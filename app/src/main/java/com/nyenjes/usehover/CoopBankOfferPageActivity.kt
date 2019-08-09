@@ -12,18 +12,17 @@ import kotlinx.android.synthetic.main.offer_view.*
 import android.widget.Toast
 import android.app.Activity
 
-class SafaricomOfferPageActivity: AppCompatActivity() {
-    private var adapter: CardRecyclerAdapter? = CardRecyclerAdapter()
+class CoopBankOfferPageActivity: AppCompatActivity() {
+    private var adapter: CardRecyclerAdapter? = CardRecyclerAdapter(null)
     private var recycler: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.offer_view)
 
-        setSupportActionBar(toolbar2)
+        setSupportActionBar(toolbar)
         supportActionBar!!.title = "Welcome"
         recycler = findViewById(R.id.recycler )
-
         recycler!!.layoutManager = LinearLayoutManager(this)
         recycler!!.adapter = adapter
 

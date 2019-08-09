@@ -15,14 +15,9 @@ import com.nyenjes.usehover.models.Card
 import com.nyenjes.usehover.providers.CardDataProvider
 import com.squareup.picasso.Picasso
 
-class CardRecyclerAdapter : RecyclerView.Adapter<CardHolder>() {
+class CardRecyclerAdapter(data: ArrayList<Card>?) : RecyclerView.Adapter<CardHolder>() {
     val TAG: String = "CardRecyclerAdapter"
-    var cardData: List<Card>? = ArrayList<Card>()
-
-
-    init {
-        cardData = CardDataProvider.getSafaricomCards()
-    }
+    var cardData: List<Card>? = data
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_holder, parent, false)

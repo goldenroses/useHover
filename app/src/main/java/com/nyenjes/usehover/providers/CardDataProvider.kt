@@ -42,6 +42,19 @@ class CardDataProvider {
 
             return cards
         }
+
+            fun getAllCards(): ArrayList<Card> {
+
+                var cards: ArrayList<Card> = ArrayList()
+
+                val carrierCard = Card("Carrier Airtime", "Buy airtime from Safaricom or airtel", "Choose price")
+                val bankCard = Card("Bank Airtime", "Buy airtime from a bank you bank with", "Choosep price")
+
+                cards.add(carrierCard)
+                cards.add(bankCard)
+
+                return cards
+            }
     }
 
 }

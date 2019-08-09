@@ -4,9 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.hover.sdk.api.Hover
+import com.nyenjes.usehover.adapters.CardRecyclerAdapter
+import com.nyenjes.usehover.providers.CardDataProvider
+import kotlinx.android.synthetic.main.offer_view.*
 
 class MainActivity : AppCompatActivity() {
+
+    private var recycler: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,15 +24,26 @@ class MainActivity : AppCompatActivity() {
 
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
-//        displayMainCards()
-        displayOFfers()
+        setSupportActionBar(toolbar)
+        supportActionBar!!.title = "Welcome"
+        recycler = findViewById(R.id.recycler )
+
+        recycler!!.layoutManager = LinearLayoutManager(this)
+
+        displayMainCards()
+
+    }
+
+    //Diaplays bank + MNO cards
+    private fun displayMainCards() {
+        recycler!!.adapter = CardRecyclerAdapter(CardDataProvider.getAllCards())
 
     }
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                displayOFfers()
+                displayMainCards()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
@@ -38,8 +56,8 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-    fun displayOFfers() {
-        val intent = Intent(this, SafaricomOfferPageActivity::class.java)
+    fun displayOfferPage() {
+        val intent = Intent(this, OfferPageActivity::class.java)
         startActivity(intent)
     }
 

@@ -23,8 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".SafaricomOfferPageActivity"/>
+        <activity android:name=".OfferPageActivity"/>
         <activity android:name=".BuyBundles"/>
+        <activity android:name=".CoopBankOfferPageActivity"/>
     </application>
 
 </manifest>
