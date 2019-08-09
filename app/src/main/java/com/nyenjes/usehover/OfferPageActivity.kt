@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.hover.sdk.api.HoverParameters
 import kotlinx.android.synthetic.main.offer_view.*
 
-
 class OfferPageActivity: AppCompatActivity() {
     val bundleOptionsList = arrayOf("Bundle type","Daily bundle", "7 day bundle", "30 day Bundle")
     val bundleFrequencyList = arrayOf("Bundle Frequency","Once", "Auto-Renew")
@@ -31,8 +30,8 @@ class OfferPageActivity: AppCompatActivity() {
         supportActionBar!!.title = "Safaricom Offers"
 
         setSpinners(spinnerBundleOption, bundleOptionsList)
-        setSpinners(spinnerBundleOption, bundleFrequencyList)
-        setSpinners(spinnerBundleOption, bundlePaymentSourceList)
+        setSpinners(spinnerBundleFrequency, bundleFrequencyList)
+        setSpinners(spinnerBundleSource, bundlePaymentSourceList)
     }
 
     fun setSpinners(spinnerType: Spinner, data: Array<String>) {
@@ -45,10 +44,10 @@ class OfferPageActivity: AppCompatActivity() {
 
     fun buyAirtime(view: View) {
         val intent = Intent(this, BuyBundles::class.java)
-        bundleOption = spinnerBundleOption.selectedItem.toString()
-        bundleAmount = bundlePrice.toString()
-        bundleFrequency = spinnerBundleOption.selectedItem.toString()
-        bundlePaymentSource = spinnerBundleOption.selectedItem.toString()
+        bundleOption = (spinnerBundleOption.selectedItemId + 1).toString()
+        bundleAmount = bundlePrice.text.toString()
+        bundleFrequency = spinnerBundleFrequency.selectedItemId.toString()
+        bundlePaymentSource = spinnerBundleSource.selectedItemId.toString()
 
         val i =  HoverParameters.Builder(this)
             .request("5963ca2d")

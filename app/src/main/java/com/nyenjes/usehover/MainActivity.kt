@@ -30,13 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         recycler!!.layoutManager = LinearLayoutManager(this)
 
-        displayMainCards()
+        recycler!!.adapter = CardRecyclerAdapter(CardDataProvider.getAllCards())
 
     }
 
     //Diaplays bank + MNO cards
     private fun displayMainCards() {
-        recycler!!.adapter = CardRecyclerAdapter(CardDataProvider.getAllCards())
 
     }
 
@@ -54,14 +53,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
         false
-    }
-
-    fun displayOfferPage() {
-        val intent = Intent(this, OfferPageActivity::class.java)
-        startActivity(intent)
-    }
-
-    companion object {
-        const val SUCCESS_STATUS = "0"
     }
 }
