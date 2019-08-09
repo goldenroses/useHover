@@ -10,7 +10,7 @@ import com.nyenjes.usehover.providers.CardDataProvider
 import kotlinx.android.synthetic.main.offer_view.*
 
 class BankListActivity : AppCompatActivity() {
-    private var adapter: CardRecyclerAdapter? = CardRecyclerAdapter(null)
+    private var adapter: CardRecyclerAdapter? = CardRecyclerAdapter(null, this)
     private var recycler: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,7 @@ class BankListActivity : AppCompatActivity() {
 
         recycler!!.layoutManager = LinearLayoutManager(this)
 
-        recycler!!.adapter = CardRecyclerAdapter(CardDataProvider.getBanksCards())
+        recycler!!.adapter = CardRecyclerAdapter(CardDataProvider.getBanksCards(), this)
 
     }
 

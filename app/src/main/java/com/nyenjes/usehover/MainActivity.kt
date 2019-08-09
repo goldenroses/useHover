@@ -1,6 +1,5 @@
 package com.nyenjes.usehover
 
-import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -30,13 +29,20 @@ class MainActivity : AppCompatActivity() {
 
         recycler!!.layoutManager = LinearLayoutManager(this)
 
-        recycler!!.adapter = CardRecyclerAdapter(CardDataProvider.getAllCards())
+        displayMainCards()
 
     }
 
     //Diaplays bank + MNO cards
     private fun displayMainCards() {
 
+        recycler!!.adapter = CardRecyclerAdapter(CardDataProvider.getAllAirtimeCards(), this)
+    }
+
+    //Diaplays utiity cards
+    private fun displayUtilityCards() {
+
+        recycler!!.adapter = CardRecyclerAdapter(CardDataProvider.getAllUtilityCards(), this)
     }
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -46,6 +52,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
+                displayUtilityCards()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {

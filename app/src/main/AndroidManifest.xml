@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".OfferPageActivity"/>
+        <activity android:name=".SafaricomOfferPageActivity"/>
         <activity android:name=".fragments.BankListActivity"/>
         <activity android:name=".BankOfferPageActivity"/>
     </application>

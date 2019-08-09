@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.hover.sdk.api.HoverParameters
 import kotlinx.android.synthetic.main.offer_view.*
 
-class OfferPageActivity: AppCompatActivity() {
+class SafaricomOfferPageActivity: AppCompatActivity() {
     val bundleOptionsList = arrayOf("Bundle type","Daily bundle", "7 day bundle", "30 day Bundle")
     val bundleFrequencyList = arrayOf("Bundle Frequency","Once", "Auto-Renew")
     val bundlePaymentSourceList = arrayOf("Buy From?","Airtime", "MPESA")
