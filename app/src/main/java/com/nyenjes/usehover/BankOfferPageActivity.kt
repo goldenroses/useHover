@@ -14,10 +14,13 @@ import kotlinx.android.synthetic.main.offer_view.*
 class BankOfferPageActivity: AppCompatActivity() {
 
     private var airtimeAmount: String? = null
+    private var bankActionCode: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.bank_offer_view)
+
+        bankActionCode = intent.getStringExtra("bankActionCode")
 
         setSupportActionBar(toolbar)
         supportActionBar!!.title = "Bank Airtime Offers"
@@ -28,7 +31,7 @@ class BankOfferPageActivity: AppCompatActivity() {
         airtimeAmount = bundlePrice.text.toString()
 
         val i =  HoverParameters.Builder(this)
-            .request("5963ca2d")
+            .request(bankActionCode)
             .extra("airtimeAmount", airtimeAmount)
             .buildIntent()
 

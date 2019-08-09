@@ -36,8 +36,7 @@ class CardRecyclerAdapter(data: ArrayList<Card>?, var context: Context) : Recycl
         holder.cardDecription.text = currentItem.cardDescription
 
         //Set drawable
-        val name = "your_drawable"
-        val id = context.getResources().getIdentifier(name, "drawable", context.getPackageName())
+        val id = context.getResources().getIdentifier(currentItem.imageUrl, "drawable", context.getPackageName())
         val drawable = context.getResources().getDrawable(id, null)
         holder.imageLocation.setImageDrawable(drawable)
 
@@ -59,7 +58,13 @@ class CardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 itemView.context.startActivity(intent)
             } else if (it.cardTitle.text.equals("NIC Bank")) {
                     val intent: Intent = Intent(itemView.context, BankOfferPageActivity::class.java)
+                    intent.putExtra("bankActionCode", "986449a0")
                     itemView.context.startActivity(intent)
+            }
+            else if (it.cardTitle.text.equals("Coop Bank")) {
+                val intent: Intent = Intent(itemView.context, BankOfferPageActivity::class.java)
+                intent.putExtra("bankActionCode", "005e2c69")
+                itemView.context.startActivity(intent)
             }
             else {
                 val intent: Intent = Intent(itemView.context, BankListActivity::class.java)
