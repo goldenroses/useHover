@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.nyenjes.usehover.ConfirmCardActivity
 import com.nyenjes.usehover.OfferPageActivity
 import com.nyenjes.usehover.R
+import com.nyenjes.usehover.fragments.BankListActivity
 import com.nyenjes.usehover.models.Card
-import com.nyenjes.usehover.providers.CardDataProvider
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.card_holder.view.*
+
 
 class CardRecyclerAdapter(data: ArrayList<Card>?) : RecyclerView.Adapter<CardHolder>() {
     var cardData: List<Card>? = data
@@ -37,32 +37,34 @@ class CardRecyclerAdapter(data: ArrayList<Card>?) : RecyclerView.Adapter<CardHol
 }
 
 class CardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
     val cardTitle = itemView.findViewById<TextView>(R.id.cardTitle)
     val cardDecription = itemView.findViewById<TextView>(R.id.cardDescription)
     val imageLocation = itemView.findViewById<ImageView>(R.id.cardImageView)
 
     init {
         itemView.setOnClickListener {
-            Log.d("--","setOnClickListener: ")
-
-            val intent: Intent = Intent(itemView.context, OfferPageActivity::class.java)
-            itemView.context.startActivity(intent)
+            Log.d("--","setOnClickListener: ${cardTitle.text}")
+            if (it.cardTitle.text.equals("Buy airtime from Carrier")) {
+                val intent: Intent = Intent(itemView.context, OfferPageActivity::class.java)
+                itemView.context.startActivity(intent)
+            } else if (it.cardTitle.text.equals("NIC Bank")) {
+                    val intent: Intent = Intent(itemView.context, OfferPageActivity::class.java)
+                    itemView.context.startActivity(intent)
+            }
+            else {
+                val intent: Intent = Intent(itemView.context, BankListActivity::class.java)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 
     fun updateCurrentItems(currentItem: Card) {
         cardTitle.text = currentItem.cardTitle
         cardDecription.text = currentItem.cardDescription
-        if(currentItem.imageUrl != null) showImage(currentItem.imageUrl!!)
         if(currentItem.imageUrl != null) {
-            Picasso.with(itemView.context).load(currentItem.imageUrl).into(imageLocation)
+            Picasso.with(itemView.context).load(currentItem.imageUrl!!).fit().into(imageLocation)
+
         }
     }
-
-    fun showImage(url: String) {
-        if(url.isEmpty() == false) {
-            Picasso.with(itemView.context).load(url).resize(144, 144).centerCrop().into(imageLocation)
-        }
-    }
-
 }

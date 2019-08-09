@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.offer_view.*
 import android.widget.Toast
 import android.app.Activity
 
-class CoopBankOfferPageActivity: AppCompatActivity() {
+class NICBankOfferPageActivity: AppCompatActivity() {
     private var adapter: CardRecyclerAdapter? = CardRecyclerAdapter(null)
     private var recycler: RecyclerView? = null
 
@@ -21,7 +21,7 @@ class CoopBankOfferPageActivity: AppCompatActivity() {
         setContentView(R.layout.offer_view)
 
         setSupportActionBar(toolbar)
-        supportActionBar!!.title = "Welcome"
+        supportActionBar!!.title = "NIC Airtime Offers"
         recycler = findViewById(R.id.recycler )
         recycler!!.layoutManager = LinearLayoutManager(this)
         recycler!!.adapter = adapter
@@ -29,8 +29,6 @@ class CoopBankOfferPageActivity: AppCompatActivity() {
     }
 
     fun buyBundle5Bob(view: View) {
-        val intent = Intent(this, BuyBundles::class.java)
-
         val i =  HoverParameters.Builder(this)
             .request("5963ca2d")
             .buildIntent()

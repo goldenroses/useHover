@@ -24,8 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".OfferPageActivity"/>
-        <activity android:name=".BuyBundles"/>
-        <activity android:name=".CoopBankOfferPageActivity"/>
+        <activity android:name=".fragments.BankListActivity"/>
+        <activity android:name=".BankOfferPageActivity"/>
     </application>
 
 </manifest>
