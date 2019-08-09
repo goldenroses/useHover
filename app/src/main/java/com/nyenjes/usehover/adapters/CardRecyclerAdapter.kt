@@ -15,6 +15,11 @@ import com.nyenjes.usehover.fragments.BankListActivity
 import com.nyenjes.usehover.models.Card
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_holder.view.*
+import android.R
+import android.content.res.Resources
+import androidx.core.content.ContextCompat
+import android.graphics.drawable.Drawable
+import android.net.Uri
 
 
 class CardRecyclerAdapter(data: ArrayList<Card>?, var context: Context) : RecyclerView.Adapter<CardHolder>() {
@@ -36,11 +41,23 @@ class CardRecyclerAdapter(data: ArrayList<Card>?, var context: Context) : Recycl
         holder.cardDecription.text = currentItem.cardDescription
 
         //Set drawable
-        val id = context.getResources().getIdentifier(currentItem.imageUrl, "drawable", context.getPackageName())
-        val drawable = context.getResources().getDrawable(id, null)
-        holder.imageLocation.setImageDrawable(drawable)
+//        val id = context.resources.getIdentifier(url, "id", context.getPackageName())
+//        holder.imageLocation.setImageResource(id)
 
-        holder.updateCurrentItems(currentItem)
+//        val drawableResId = context.resIdByName("ic_gift", "drawable")
+//        val drawableResourceId = context.getResources().getIdentifier("ic_gift", "drawable", context.getPackageName())
+
+//        val drawable = context.resources.getDrawable(drawableResourceId, null)
+//        holder.imageLocation.setImageDrawable(drawable)
+
+        holder.updateCurrentItems(currentItem, context)
+    }
+
+    fun Context.resIdByName(resIdName: String?, resType: String): Int {
+        resIdName?.let {
+            return resources.getIdentifier(it, resType, packageName)
+        }
+        throw Resources.NotFoundException()
     }
 }
 
@@ -48,7 +65,7 @@ class CardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     val cardTitle = itemView.findViewById<TextView>(com.nyenjes.usehover.R.id.cardTitle)
     val cardDecription = itemView.findViewById<TextView>(com.nyenjes.usehover.R.id.cardDescription)
-    val imageLocation = itemView.findViewById<ImageView>(com.nyenjes.usehover.R.id.cardImageView)
+    val imageLocation = itemView.findViewById<ImageView>(com.nyenjes.usehover.R.id.cardImage)
 
     init {
         itemView.setOnClickListener {
@@ -73,12 +90,17 @@ class CardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         }
     }
 
-    fun updateCurrentItems(currentItem: Card) {
+    fun updateCurrentItems(currentItem: Card, context: Context) {
         cardTitle.text = currentItem.cardTitle
         cardDecription.text = currentItem.cardDescription
         if(currentItem.imageUrl != null) {
-            Picasso.with(itemView.context).load(currentItem.imageUrl!!).fit().into(imageLocation)
+//            Picasso.with(itemView.context).load(currentItem.imageUrl!!).fit().into(imageLocation)
+//        val drawableResId = context.resIdByName("ic_gift", "drawable")
+        val drawableResourceId = context.getResources().getIdentifier(currentItem.imageUrl, "drawable", context.getPackageName())
 
+        val drawable = context.resources.getDrawable(drawableResourceId, null)
+        imageLocation.setImageDrawable(drawable)
+//
         }
     }
 }

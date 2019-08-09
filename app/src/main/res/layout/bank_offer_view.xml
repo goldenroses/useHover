@@ -21,7 +21,7 @@
                 android:gravity="center">
             <TextView
                     android:textSize="30sp"
-                    android:text="Choose Airtime"
+                    android:text="Amount of Airtime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/title"
